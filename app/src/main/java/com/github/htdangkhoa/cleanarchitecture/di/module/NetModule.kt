@@ -3,7 +3,7 @@ package com.github.htdangkhoa.cleanarchitecture.di.module
 import android.content.Context
 import com.blankj.utilcode.util.NetworkUtils
 import com.github.htdangkhoa.cleanarchitecture.data.model.AuthModel
-import com.github.htdangkhoa.cleanarchitecture.data.service.AppService
+import com.github.htdangkhoa.cleanarchitecture.data.service.ApiService
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -74,5 +74,5 @@ object NetModule {
         return Cache(context.cacheDir, cacheSize)
     }
 
-    private fun provideAppService(retrofit: Retrofit): AppService = retrofit.create(AppService::class.java)
+    private fun provideAppService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 }

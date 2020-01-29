@@ -28,7 +28,7 @@ class LoginActivity: BaseActivity<LoginViewModel>(LoginViewModel::class) {
 
                 startActivity<MainActivity>()
 
-                finish()
+                finishAfterTransition()
             }
 
             override fun onError(throwable: Throwable?) {

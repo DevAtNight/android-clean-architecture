@@ -42,5 +42,23 @@ class MainActivity: BaseActivity<MainViewModel>(MainViewModel::class) {
         })
 
         viewModel.getMe()
+
+        viewModel.resourceLogout.observe(this, object: ObserverResource<String>() {
+            override fun onSuccess(data: String) {
+                logout(401)
+            }
+
+            override fun onError(throwable: Throwable?) {
+                handleError(throwable) {
+                    it?.message?.let {
+                        showDialog("Error", it)
+                    }
+                }
+            }
+        })
+
+        btnLogout.setOnClickListener {
+            viewModel.logout()
+        }
     }
 }

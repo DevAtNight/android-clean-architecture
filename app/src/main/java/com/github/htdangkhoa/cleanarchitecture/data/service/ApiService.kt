@@ -1,5 +1,6 @@
 package com.github.htdangkhoa.cleanarchitecture.data.service
 
+import com.github.htdangkhoa.cleanarchitecture.data.remote.SuccessResponse
 import com.github.htdangkhoa.cleanarchitecture.data.remote.auth.AuthResponse
 import com.github.htdangkhoa.cleanarchitecture.data.remote.auth.login.LoginRequest
 import com.github.htdangkhoa.cleanarchitecture.data.remote.auth.renew_token.RenewTokenRequest
@@ -8,7 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface AppService {
+interface ApiService {
     @POST("auth/login")
     suspend fun login(
         @Body loginRequest: LoginRequest
@@ -21,4 +22,7 @@ interface AppService {
 
     @GET("me")
     suspend fun getMe(): GetMeResponse
+
+    @GET("auth/logout")
+    suspend fun logout(): SuccessResponse
 }

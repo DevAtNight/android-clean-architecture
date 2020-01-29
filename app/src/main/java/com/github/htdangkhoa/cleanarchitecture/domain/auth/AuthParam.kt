@@ -3,14 +3,16 @@ package com.github.htdangkhoa.cleanarchitecture.domain.auth
 import com.github.htdangkhoa.cleanarchitecture.data.remote.auth.login.LoginRequest
 import com.github.htdangkhoa.cleanarchitecture.data.remote.auth.renew_token.RenewTokenRequest
 
-class AuthParam private constructor(val type: Int) {
+class AuthParam constructor(val type: Int) {
     internal annotation class Type {
         companion object {
-            const val SIGN_UP = 1
+            const val REGISTER = 1
 
             const val LOGIN = 2
 
             const val RENEW_TOKEN = 3
+
+            const val LOGOUT = 4
         }
     }
 

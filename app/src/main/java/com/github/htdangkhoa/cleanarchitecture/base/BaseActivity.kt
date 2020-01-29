@@ -46,7 +46,7 @@ abstract class BaseActivity<VM: ViewModel>(clazz: KClass<VM>): AppCompatActivity
         }
     }
 
-    private fun logout(code: Int) {
+    fun logout(code: Int) {
         if (code == 401) {
             AuthModel.clear()
 

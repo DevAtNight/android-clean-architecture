@@ -12,6 +12,8 @@ class AuthUseCase(
 
             AuthParam.Type.RENEW_TOKEN -> repository.renewToken(params.renewTokenRequest)
 
+            AuthParam.Type.LOGOUT -> repository.logout()
+
             else -> throw UnsupportedOperationException("This request is not support in this case!")
         }
     }

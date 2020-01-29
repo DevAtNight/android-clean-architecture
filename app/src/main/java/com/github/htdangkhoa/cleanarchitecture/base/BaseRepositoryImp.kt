@@ -1,5 +1,5 @@
 package com.github.htdangkhoa.cleanarchitecture.base
 
-import com.github.htdangkhoa.cleanarchitecture.data.service.AppService
+import com.github.htdangkhoa.cleanarchitecture.data.service.ApiService
 
-abstract class BaseRepositoryImp(val appService: AppService): BaseRepository
+abstract class BaseRepositoryImp(val apiService: ApiService): BaseRepository

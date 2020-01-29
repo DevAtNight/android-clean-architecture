@@ -1,8 +1,8 @@
-package com.github.htdangkhoa.cleanarchitecture.util
+package com.github.htdangkhoa.cleanarchitecture.resource
 
 import kotlinx.coroutines.CancellationException
 
-typealias CompletionBlock<T> = Request<T>.() -> Unit
+typealias OnHandle<T> = ResourceHandler<T>.() -> Unit
 
 typealias OnComplete<T> = (T) -> Unit
 
@@ -10,7 +10,7 @@ typealias OnError = (Throwable) -> Unit
 
 typealias OnCancel = (CancellationException) -> Unit
 
-class Request<T> {
+class ResourceHandler<T> {
     private var onComplete: OnComplete<T>? = null
 
     private var onError: OnError? = null
