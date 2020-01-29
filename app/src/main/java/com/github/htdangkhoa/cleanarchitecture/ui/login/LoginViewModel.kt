@@ -13,12 +13,8 @@ class LoginViewModel(
 ): ViewModel() {
     val resourceToken = liveDataOf<Resource<AuthResponse.Token>>()
 
-    fun login() {
-        val request =
-            LoginRequest(
-                "+84779088405",
-                "1"
-            )
+    fun login(phone: String, password: String) {
+        val request = LoginRequest(phone, password)
 
         resourceToken.postValue(Resource.loading())
 

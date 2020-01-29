@@ -31,7 +31,9 @@ buildscript {
 
                 kandroid: "0.8.8@aar",
 
-                kotpref: "2.10.0"
+                kotpref: "2.10.0",
+
+                materialDialogs: "3.1.1"
         ]
     }
     

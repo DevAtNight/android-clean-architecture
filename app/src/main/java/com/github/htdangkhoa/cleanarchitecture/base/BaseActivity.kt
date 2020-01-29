@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
+import com.afollestad.materialdialogs.MaterialDialog
 import com.github.htdangkhoa.cleanarchitecture.data.model.AuthModel
 import com.github.htdangkhoa.cleanarchitecture.data.model.ResponseExceptionModel
 import com.github.htdangkhoa.cleanarchitecture.ui.login.LoginActivity
@@ -30,7 +31,11 @@ abstract class BaseActivity<VM: ViewModel>(clazz: KClass<VM>): AppCompatActivity
 
     open fun render(savedInstanceState: Bundle?) = Unit
 
-    fun defaultErrorHandler(throwable: Throwable? = null, block: ((Throwable?) -> Unit)? = null) {
+    fun handleError(throwable: Throwable? = null, block: ((Throwable?) -> Unit)? = null) {
+        return block?.invoke(throwable) ?: handleHttpError(throwable)
+    }
+
+    fun handleHttpError(throwable: Throwable?) {
         when (throwable) {
             is HttpException -> {
                 logout(throwable.code())
@@ -39,17 +44,27 @@ abstract class BaseActivity<VM: ViewModel>(clazz: KClass<VM>): AppCompatActivity
                 throwable.responseModel?.code?.let { logout(it) }
             }
         }
-
-        block?.invoke(throwable)
     }
 
     private fun logout(code: Int) {
         if (code == 401) {
             AuthModel.clear()
 
-            startActivity<LoginActivity>()
+            if (this::class.simpleName != LoginActivity::class.simpleName) {
+                startActivity<LoginActivity>()
 
-            finishAfterTransition()
+                finishAfterTransition()
+            }
+        }
+    }
+
+    fun showDialog(title: String? = "Info", message: String? = null): MaterialDialog {
+        return MaterialDialog(this).show {
+            title(text = title)
+
+            message(text = message)
+
+            positiveButton(text = "OK")
         }
     }
 }

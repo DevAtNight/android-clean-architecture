@@ -27,8 +27,10 @@ class MainActivity: BaseActivity<MainViewModel>(MainViewModel::class) {
             }
 
             override fun onError(throwable: Throwable?) {
-                defaultErrorHandler(throwable) {
+                handleError(throwable) {
                     it?.message?.let { toast(it) }
+
+                    handleHttpError(it)
                 }
             }
 

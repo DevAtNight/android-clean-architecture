@@ -10,6 +10,7 @@ import com.github.htdangkhoa.cleanarchitecture.ui.main.MainActivity
 import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.show
 import com.pawegio.kandroid.startActivity
+import com.pawegio.kandroid.toast
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity: BaseActivity<LoginViewModel>(LoginViewModel::class) {
@@ -31,7 +32,15 @@ class LoginActivity: BaseActivity<LoginViewModel>(LoginViewModel::class) {
             }
 
             override fun onError(throwable: Throwable?) {
-                defaultErrorHandler(throwable)
+                handleError(throwable) {
+                    it?.message?.let {
+                        showDialog(message = it).apply {
+                            positiveButton {
+                                handleHttpError(throwable)
+                            }
+                        }
+                    }
+                }
             }
 
             override fun onLoading(isShow: Boolean) {
@@ -41,6 +50,10 @@ class LoginActivity: BaseActivity<LoginViewModel>(LoginViewModel::class) {
             }
         })
 
-        btnLogin.setOnClickListener { viewModel.login() }
+        btnLogin.setOnClickListener {
+            viewModel.login(
+                edtPhone.text.toString(), edtPassword.text.toString()
+            )
+        }
     }
 }
