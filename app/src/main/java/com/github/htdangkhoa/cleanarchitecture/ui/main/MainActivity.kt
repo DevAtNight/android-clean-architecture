@@ -11,7 +11,7 @@ import com.pawegio.kandroid.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity: BaseActivity<MainViewModel>(MainViewModel::class) {
-    override val layoutRedID: Int
+    override val layoutResID: Int
         get() = R.layout.activity_main
 
     override fun render(savedInstanceState: Bundle?) {

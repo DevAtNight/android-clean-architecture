@@ -16,7 +16,7 @@ import com.pawegio.kandroid.toast
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity: BaseActivity<SplashViewModel>(SplashViewModel::class) {
-    override val layoutRedID: Int
+    override val layoutResID: Int
         get() = R.layout.activity_splash
 
     override fun render(savedInstanceState: Bundle?) {

@@ -14,7 +14,7 @@ import com.pawegio.kandroid.toast
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity: BaseActivity<LoginViewModel>(LoginViewModel::class) {
-    override val layoutRedID: Int
+    override val layoutResID: Int
         get() = R.layout.activity_login
 
     override fun render(savedInstanceState: Bundle?) {

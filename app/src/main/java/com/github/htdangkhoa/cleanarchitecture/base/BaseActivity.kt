@@ -16,7 +16,7 @@ import kotlin.reflect.KClass
 
 @SuppressLint("Registered")
 abstract class BaseActivity<VM: ViewModel>(clazz: KClass<VM>): AppCompatActivity() {
-    abstract val layoutRedID: Int
+    abstract val layoutResID: Int
 
     val viewModel: VM by viewModel(clazz)
 
@@ -24,7 +24,7 @@ abstract class BaseActivity<VM: ViewModel>(clazz: KClass<VM>): AppCompatActivity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(layoutRedID)
+        setContentView(layoutResID)
 
         render(savedInstanceState)
     }
