@@ -17,3 +17,4 @@
 - App architecture - [(MVVM)](https://developer.android.com/jetpack/docs/guide).
 - Asynchronous programming - [(Corountines)](https://kotlinlang.org/docs/reference/coroutines-overview.html).
 - Dependency injection - [(Koin)](https://insert-koin.io/).
+- Observable data holder class - [(Livedata)](https://developer.android.com/topic/libraries/architecture/livedata).
