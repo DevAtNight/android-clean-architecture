@@ -18,3 +18,11 @@
 - Asynchronous programming - [(Corountines)](https://kotlinlang.org/docs/reference/coroutines-overview.html).
 - Dependency injection - [(Koin)](https://insert-koin.io/).
 - Observable data holder class - [(Livedata)](https://developer.android.com/topic/libraries/architecture/livedata).
+- HTTP client - [(OkHttp)](https://github.com/square/okhttp).
+- Type-safe HTTP client - [(Retrofit)](https://github.com/square/retrofit).
+- A Java serialization/deserialization library to convert Java Objects into JSON and back - [(Gson)](https://github.com/google/gson).
+- Android logging - [(Timber)](https://github.com/JakeWharton/timber).
+- Android SharedPreferences delegation library for Kotlin - [(Kotpref)](https://github.com/chibatching/Kotpref).
+- A beautiful, fluid, and extensible dialogs API for Kotlin & Android - [(material-dialogs)](https://github.com/afollestad/material-dialogs).
+- Useful extensions to eliminate boilerplate code in Android SDK and focus on productivity - [(KAndroid)](https://github.com/pawegio/KAndroid).
+- Android utilities - [(AndroidUtilCode)](https://github.com/Blankj/AndroidUtilCode).
