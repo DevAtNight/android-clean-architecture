@@ -11,6 +11,8 @@
   </a>
 </p>
 
+![android_clean_architecture](https://raw.githubusercontent.com/htdangkhoa/android-clean-architecture/master/art/android_clean_architecture.svg?sanitize=true)
+
 ## Features
 
 - 100% Kotlin.
