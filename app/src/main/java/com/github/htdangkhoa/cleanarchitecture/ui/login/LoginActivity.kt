@@ -10,7 +10,6 @@ import com.github.htdangkhoa.cleanarchitecture.ui.main.MainActivity
 import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.show
 import com.pawegio.kandroid.startActivity
-import com.pawegio.kandroid.toast
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity: BaseActivity<LoginViewModel>(LoginViewModel::class) {

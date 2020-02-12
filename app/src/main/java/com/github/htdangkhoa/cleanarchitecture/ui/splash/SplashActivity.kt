@@ -36,11 +36,10 @@ class SplashActivity: BaseActivity<SplashViewModel>(SplashViewModel::class) {
             override fun onError(throwable: Throwable?) {
                 handleError(throwable) {
                     it?.message?.let { message ->
-                        showDialog("Error", message).apply {
-                            positiveButton(text = "TEST") {
+                        showDialog("Error", message)
+                            .positiveButton {
                                 handleHttpError(throwable)
                             }
-                        }
                     }
                 }
             }
