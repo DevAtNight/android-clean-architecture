@@ -1,10 +1,13 @@
 package com.github.htdangkhoa.cleanarchitecture.base
 
-import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import com.afollestad.materialdialogs.MaterialDialog
 import com.github.htdangkhoa.cleanarchitecture.data.model.AuthModel
@@ -15,23 +18,29 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import retrofit2.HttpException
 import kotlin.reflect.KClass
 
-@SuppressLint("Registered")
-abstract class BaseActivity<VM: ViewModel>(clazz: KClass<VM>): AppCompatActivity() {
+/**
+ * Created by khoahuynh on 2020-02-12.
+ */
+abstract class BaseFragment<VM: ViewModel>(val clazz: KClass<VM>): Fragment() {
     @get:LayoutRes
     abstract val layoutResID: Int
 
     protected val viewModel: VM by viewModel(clazz)
 
-    @CallSuper
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setContentView(layoutResID)
-
-        render(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(layoutResID, container, false)
     }
 
-    protected open fun render(savedInstanceState: Bundle?) = Unit
+    @CallSuper
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        render(view, savedInstanceState)
+    }
+
+    protected open fun render(view: View, savedInstanceState: Bundle?) = Unit
 
     protected fun handleError(throwable: Throwable? = null, block: ((Throwable?) -> Unit)? = null) {
         return block?.invoke(throwable) ?: handleHttpError(throwable)
@@ -52,16 +61,18 @@ abstract class BaseActivity<VM: ViewModel>(clazz: KClass<VM>): AppCompatActivity
         if (code == 401) {
             AuthModel.clear()
 
-            if (this::class.simpleName != LoginActivity::class.simpleName) {
-                startActivity<LoginActivity>()
+            context?.let {
+                if (it is Activity && it::class.simpleName != LoginActivity::class.simpleName) {
+                    it.startActivity<LoginActivity>()
 
-                finishAfterTransition()
+                    it.finishAfterTransition()
+                }
             }
         }
     }
 
     protected fun showDialog(title: String? = "Info", message: String? = null): MaterialDialog {
-        return MaterialDialog(this).show {
+        return MaterialDialog(context!!).show {
             title(text = title)
 
             message(text = message)
