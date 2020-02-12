@@ -3,11 +3,10 @@
 </h1>
 
 <p align="center">
-  <a href="https://img.shields.io/badge/Platform-Android%206.0-36da7e?logo=android">
-    <img src="https://img.shields.io/badge/Platform-Android%206.0-36da7e?logo=android" alt="platform" />
-  </a>
-  <a href="https://img.shields.io/badge/Kotlin-1.3.61-orange?logo=kotlin">
-    <img src="https://img.shields.io/badge/Kotlin-1.3.61-orange?logo=kotlin" alt="language" />
+  <img src="https://img.shields.io/badge/Platform-Android%206.0-36da7e?logo=android" alt="platform" />
+  <img src="https://img.shields.io/badge/Kotlin-1.3.61-orange?logo=kotlin" alt="language" />
+  <a href="https://github.com/htdangkhoa/android-clean-architecture/releases">
+    <img src="https://img.shields.io/github/v/release/htdangkhoa/android-clean-architecture" alt="version" />
   </a>
 </p>
 
