@@ -9,6 +9,9 @@
   <a href="https://img.shields.io/badge/Kotlin-1.3.61-orange?logo=kotlin">
     <img src="https://img.shields.io/badge/Kotlin-1.3.61-orange?logo=kotlin" alt="language" />
   </a>
+  <a href="https://github.com/htdangkhoa/android-clean-architecture/releases">
+    <img src="https://img.shields.io/github/v/release/htdangkhoa/android-clean-architecture" alt="version" />
+  </a>
 </p>
 
 ![android_clean_architecture](https://raw.githubusercontent.com/htdangkhoa/android-clean-architecture/master/art/android_clean_architecture.svg?sanitize=true)
