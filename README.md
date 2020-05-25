@@ -31,3 +31,4 @@
 - A beautiful, fluid, and extensible dialogs API for Kotlin & Android - [(material-dialogs)](https://github.com/afollestad/material-dialogs).
 - Useful extensions to eliminate boilerplate code in Android SDK and focus on productivity - [(KAndroid)](https://github.com/pawegio/KAndroid).
 - Android utilities - [(AndroidUtilCode)](https://github.com/Blankj/AndroidUtilCode).
+- Code Formatting - [(ktlint)](https://github.com/pinterest/ktlint) & [(ktlint-gradle)](https://github.com/JLLeitschuh/ktlint-gradle).
