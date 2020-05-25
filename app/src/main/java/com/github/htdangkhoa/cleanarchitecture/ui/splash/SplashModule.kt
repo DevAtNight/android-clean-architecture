@@ -16,7 +16,8 @@ object SplashModule {
         viewModel { SplashViewModel(get()) }
     }
 
-    private fun provideAuthRepository(apiService: ApiService): AuthRepository = AuthRepositoryImp(apiService)
+    private fun provideAuthRepository(apiService: ApiService): AuthRepository =
+        AuthRepositoryImp(apiService)
 
     private fun provideAuthUseCase(authRepository: AuthRepository) = AuthUseCase(authRepository)
 }

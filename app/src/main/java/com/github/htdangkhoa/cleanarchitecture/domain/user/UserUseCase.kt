@@ -5,7 +5,7 @@ import com.github.htdangkhoa.cleanarchitecture.data.repository.user.UserReposito
 
 class UserUseCase(
     repository: UserRepository
-): BaseUseCase<UserRepository, Any>(repository) {
+) : BaseUseCase<UserRepository, Any>(repository) {
     override suspend fun buildUseCase(params: Any?): Result<*> {
         return repository.getMe()
     }

@@ -10,12 +10,12 @@ import com.pawegio.kandroid.show
 import com.pawegio.kandroid.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity: BaseActivity<MainViewModel>(MainViewModel::class) {
+class MainActivity : BaseActivity<MainViewModel>(MainViewModel::class) {
     override val layoutResID: Int
         get() = R.layout.activity_main
 
     override fun render(savedInstanceState: Bundle?) {
-        viewModel.resourceUser.observe(this, object: ObserverResource<GetMeResponse.User>() {
+        viewModel.resourceUser.observe(this, object : ObserverResource<GetMeResponse.User>() {
             override fun onSuccess(data: GetMeResponse.User) {
                 data.apply {
                     txtPhone.text = "Phone: $phone"
@@ -43,7 +43,7 @@ class MainActivity: BaseActivity<MainViewModel>(MainViewModel::class) {
 
         viewModel.getMe()
 
-        viewModel.resourceLogout.observe(this, object: ObserverResource<String>() {
+        viewModel.resourceLogout.observe(this, object : ObserverResource<String>() {
             override fun onSuccess(data: String) {
                 logout(401)
             }

@@ -45,7 +45,11 @@ fun <T> merge(liveDataList: List<LiveData<T>>): LiveData<MutableList<Any?>> {
 fun <A, B> LiveData<A>.combineLatest(second: LiveData<B>) =
     combineLatest(this, second) { a, b -> Pair(a, b) }
 
-fun <A, B, C> combineLatest(first: LiveData<A>, second: LiveData<B>, block: (A?, B?) -> C): LiveData<C> {
+fun <A, B, C> combineLatest(
+    first: LiveData<A>,
+    second: LiveData<B>,
+    block: (A?, B?) -> C
+): LiveData<C> {
     val finalLiveData = MediatorLiveData<C>()
 
     var firstEmitted = false
@@ -82,7 +86,12 @@ fun <A, B, C> combineLatest(first: LiveData<A>, second: LiveData<B>, block: (A?,
 fun <A, B, C> LiveData<A>.combineLatest(second: LiveData<B>, third: LiveData<C>) =
     combineLatest(this, second, third) { a, b, c -> Triple(a, b, c) }
 
-fun <A, B, C, D> combineLatest(first: LiveData<A>, second: LiveData<B>, third: LiveData<C>, block: (A?, B?, C?) -> D): LiveData<D> {
+fun <A, B, C, D> combineLatest(
+    first: LiveData<A>,
+    second: LiveData<B>,
+    third: LiveData<C>,
+    block: (A?, B?, C?) -> D
+): LiveData<D> {
     val finalLiveData = MediatorLiveData<D>()
 
     var firstEmitted = false

@@ -8,7 +8,9 @@ data class Resource<T>(
     companion object {
         inline fun <reified T> success(data: T) = Resource(StatusResource.SUCCESS, data)
 
-        inline fun <reified T> error(throwable: Throwable) = Resource<T>(StatusResource.ERROR, null, throwable)
+        inline fun <reified T> error(
+            throwable: Throwable
+        ) = Resource<T>(StatusResource.ERROR, null, throwable)
 
         inline fun <reified T> loading() = Resource<T>(StatusResource.LOADING, null, null)
 

@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 /**
  * Created by khoahuynh on 2020-01-06.
  */
-abstract class ObserverResource<T>: Observer<Resource<T>> {
+abstract class ObserverResource<T> : Observer<Resource<T>> {
     override fun onChanged(t: Resource<T>) = handleResource(t)
 
     abstract fun onSuccess(data: T)

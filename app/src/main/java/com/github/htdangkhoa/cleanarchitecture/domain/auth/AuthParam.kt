@@ -20,11 +20,11 @@ class AuthParam constructor(val type: Int) {
 
     lateinit var renewTokenRequest: RenewTokenRequest
 
-    constructor(loginRequest: LoginRequest): this(Type.LOGIN) {
+    constructor(loginRequest: LoginRequest) : this(Type.LOGIN) {
         this.loginRequest = loginRequest
     }
 
-    constructor(renewTokenRequest: RenewTokenRequest): this(Type.RENEW_TOKEN) {
+    constructor(renewTokenRequest: RenewTokenRequest) : this(Type.RENEW_TOKEN) {
         this.renewTokenRequest = renewTokenRequest
     }
 }

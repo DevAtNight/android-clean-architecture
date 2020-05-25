@@ -14,14 +14,14 @@ import com.github.htdangkhoa.cleanarchitecture.data.model.AuthModel
 import com.github.htdangkhoa.cleanarchitecture.data.model.ResponseExceptionModel
 import com.github.htdangkhoa.cleanarchitecture.ui.login.LoginActivity
 import com.pawegio.kandroid.startActivity
+import kotlin.reflect.KClass
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import retrofit2.HttpException
-import kotlin.reflect.KClass
 
 /**
  * Created by khoahuynh on 2020-02-12.
  */
-abstract class BaseFragment<VM: ViewModel>(val clazz: KClass<VM>): Fragment() {
+abstract class BaseFragment<VM : ViewModel>(val clazz: KClass<VM>) : Fragment() {
     @get:LayoutRes
     abstract val layoutResID: Int
 

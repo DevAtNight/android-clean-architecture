@@ -9,7 +9,7 @@ import com.github.htdangkhoa.cleanarchitecture.extension.map
 
 class AuthRepositoryImp(
     apiService: ApiService
-): BaseRepositoryImp(apiService), AuthRepository {
+) : BaseRepositoryImp(apiService), AuthRepository {
     override suspend fun login(loginRequest: LoginRequest): Result<AuthResponse.Token?> {
         return try {
             val res = apiService.login(loginRequest)
@@ -20,7 +20,9 @@ class AuthRepositoryImp(
         }
     }
 
-    override suspend fun renewToken(renewTokenRequest: RenewTokenRequest): Result<AuthResponse.Token?> {
+    override suspend fun renewToken(
+        renewTokenRequest: RenewTokenRequest
+    ): Result<AuthResponse.Token?> {
         return try {
             val res = apiService.renewToken(renewTokenRequest)
 

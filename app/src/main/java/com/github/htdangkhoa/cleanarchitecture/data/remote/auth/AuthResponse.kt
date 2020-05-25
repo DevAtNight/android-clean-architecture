@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class AuthResponse(
     @SerializedName("data")
     override val data: Token?
-): ResponseModel<AuthResponse.Token?>() {
+) : ResponseModel<AuthResponse.Token?>() {
     data class Token(
         @SerializedName("accessToken")
         val accessToken: String,

@@ -11,7 +11,7 @@ import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-abstract class BaseUseCase<Repository: BaseRepository, Params: Any>(val repository: Repository) {
+abstract class BaseUseCase<Repository : BaseRepository, Params : Any>(val repository: Repository) {
     var parentJob = SupervisorJob()
 
     val backgroundContext = Dispatchers.IO
@@ -48,7 +48,7 @@ abstract class BaseUseCase<Repository: BaseRepository, Params: Any>(val reposito
     }
 
     fun unsubscribe() {
-        parentJob .apply {
+        parentJob.apply {
             cancelChildren()
 
             cancel()

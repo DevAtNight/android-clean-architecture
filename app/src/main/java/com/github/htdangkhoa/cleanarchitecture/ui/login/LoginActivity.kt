@@ -12,12 +12,12 @@ import com.pawegio.kandroid.show
 import com.pawegio.kandroid.startActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity: BaseActivity<LoginViewModel>(LoginViewModel::class) {
+class LoginActivity : BaseActivity<LoginViewModel>(LoginViewModel::class) {
     override val layoutResID: Int
         get() = R.layout.activity_login
 
     override fun render(savedInstanceState: Bundle?) {
-        viewModel.resourceToken.observe(this, object: ObserverResource<AuthResponse.Token>() {
+        viewModel.resourceToken.observe(this, object : ObserverResource<AuthResponse.Token>() {
             override fun onSuccess(data: AuthResponse.Token) {
                 data.apply {
                     AuthModel.accessToken = accessToken

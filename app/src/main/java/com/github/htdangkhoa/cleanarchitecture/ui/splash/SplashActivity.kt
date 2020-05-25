@@ -12,15 +12,14 @@ import com.github.htdangkhoa.cleanarchitecture.ui.main.MainActivity
 import com.pawegio.kandroid.hide
 import com.pawegio.kandroid.show
 import com.pawegio.kandroid.startActivity
-import com.pawegio.kandroid.toast
 import kotlinx.android.synthetic.main.activity_splash.*
 
-class SplashActivity: BaseActivity<SplashViewModel>(SplashViewModel::class) {
+class SplashActivity : BaseActivity<SplashViewModel>(SplashViewModel::class) {
     override val layoutResID: Int
         get() = R.layout.activity_splash
 
     override fun render(savedInstanceState: Bundle?) {
-        viewModel.resourceToken.observe(this, object: ObserverResource<AuthResponse.Token>() {
+        viewModel.resourceToken.observe(this, object : ObserverResource<AuthResponse.Token>() {
             override fun onSuccess(data: AuthResponse.Token) {
                 data.apply {
                     AuthModel.accessToken = accessToken

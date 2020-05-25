@@ -14,7 +14,7 @@ object MainModule {
     val module = module {
         single(override = true) { provideUserRepository(get()) }
 
-        single (override = true){ provideUserUseCase(get()) }
+        single(override = true) { provideUserUseCase(get()) }
 
         single(override = true) { provideAuthRepository(get()) }
 
@@ -23,11 +23,13 @@ object MainModule {
         viewModel { MainViewModel(get(), get()) }
     }
 
-    private fun provideUserRepository(apiService: ApiService): UserRepository = UserRepositoryImp(apiService)
+    private fun provideUserRepository(apiService: ApiService): UserRepository =
+            UserRepositoryImp(apiService)
 
     private fun provideUserUseCase(userRepository: UserRepository) = UserUseCase(userRepository)
 
-    private fun provideAuthRepository(apiService: ApiService): AuthRepository = AuthRepositoryImp(apiService)
+    private fun provideAuthRepository(apiService: ApiService): AuthRepository =
+            AuthRepositoryImp(apiService)
 
     private fun provideAuthUseCase(authRepository: AuthRepository) = AuthUseCase(authRepository)
 }

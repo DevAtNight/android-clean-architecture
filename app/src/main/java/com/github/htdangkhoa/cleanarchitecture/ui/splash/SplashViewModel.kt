@@ -8,7 +8,7 @@ import com.github.htdangkhoa.cleanarchitecture.domain.auth.AuthUseCase
 import com.github.htdangkhoa.cleanarchitecture.extension.liveDataOf
 import com.github.htdangkhoa.cleanarchitecture.resource.Resource
 
-class SplashViewModel(private val authUseCase: AuthUseCase): ViewModel() {
+class SplashViewModel(private val authUseCase: AuthUseCase) : ViewModel() {
     val resourceToken = liveDataOf<Resource<AuthResponse.Token>>()
 
     fun renewToken(refreshToken: String) {

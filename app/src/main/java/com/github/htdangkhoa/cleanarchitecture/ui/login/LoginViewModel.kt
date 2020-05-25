@@ -10,7 +10,7 @@ import com.github.htdangkhoa.cleanarchitecture.resource.Resource
 
 class LoginViewModel(
     private val authUseCase: AuthUseCase
-): ViewModel() {
+) : ViewModel() {
     val resourceToken = liveDataOf<Resource<AuthResponse.Token>>()
 
     fun login(phone: String, password: String) {

@@ -11,7 +11,7 @@ import com.github.htdangkhoa.cleanarchitecture.resource.Resource
 class MainViewModel(
     private val userUseCase: UserUseCase,
     private val authUseCase: AuthUseCase
-): ViewModel() {
+) : ViewModel() {
     val resourceUser = liveDataOf<Resource<GetMeResponse.User>>()
 
     val resourceLogout = liveDataOf<Resource<String>>()

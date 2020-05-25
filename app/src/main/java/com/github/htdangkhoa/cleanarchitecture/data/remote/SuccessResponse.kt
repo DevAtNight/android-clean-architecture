@@ -6,4 +6,4 @@ import com.google.gson.annotations.SerializedName
 data class SuccessResponse(
     @SerializedName("data")
     override val data: String = "Success."
-): ResponseModel<String>()
+) : ResponseModel<String>()

@@ -5,7 +5,7 @@ import com.github.htdangkhoa.cleanarchitecture.data.repository.auth.AuthReposito
 
 class AuthUseCase(
     repository: AuthRepository
-): BaseUseCase<AuthRepository, AuthParam>(repository) {
+) : BaseUseCase<AuthRepository, AuthParam>(repository) {
     override suspend fun buildUseCase(params: AuthParam?): Result<*> {
         return when (params?.type) {
             AuthParam.Type.LOGIN -> repository.login(params.loginRequest)

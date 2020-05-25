@@ -11,12 +11,12 @@ import com.github.htdangkhoa.cleanarchitecture.data.model.AuthModel
 import com.github.htdangkhoa.cleanarchitecture.data.model.ResponseExceptionModel
 import com.github.htdangkhoa.cleanarchitecture.ui.login.LoginActivity
 import com.pawegio.kandroid.startActivity
+import kotlin.reflect.KClass
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import retrofit2.HttpException
-import kotlin.reflect.KClass
 
 @SuppressLint("Registered")
-abstract class BaseActivity<VM: ViewModel>(clazz: KClass<VM>): AppCompatActivity() {
+abstract class BaseActivity<VM : ViewModel>(clazz: KClass<VM>) : AppCompatActivity() {
     @get:LayoutRes
     abstract val layoutResID: Int
 

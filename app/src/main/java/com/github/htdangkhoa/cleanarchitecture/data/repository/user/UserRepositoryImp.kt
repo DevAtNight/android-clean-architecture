@@ -8,7 +8,7 @@ import retrofit2.HttpException
 
 class UserRepositoryImp(
     apiService: ApiService
-): BaseRepositoryImp(apiService), UserRepository {
+) : BaseRepositoryImp(apiService), UserRepository {
     override suspend fun getMe(): Result<GetMeResponse.User?> {
         return try {
             val res = apiService.getMe()
