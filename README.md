@@ -12,6 +12,9 @@
   <a href="https://github.com/htdangkhoa/android-clean-architecture/releases">
     <img src="https://img.shields.io/github/v/release/htdangkhoa/android-clean-architecture" alt="version" />
   </a>
+  <a href="https://codebeat.co/projects/github-com-htdangkhoa-android-clean-architecture-master">
+    <img alt="codebeat badge" src="https://codebeat.co/badges/bc8dcff6-8db7-45ff-a2c4-0d6882d4a03a" />
+  </a>
 </p>
 
 ![android_clean_architecture](https://raw.githubusercontent.com/htdangkhoa/android-clean-architecture/master/art/android_clean_architecture.svg?sanitize=true)
