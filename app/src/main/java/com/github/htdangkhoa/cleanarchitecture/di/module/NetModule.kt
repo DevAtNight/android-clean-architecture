@@ -2,6 +2,7 @@ package com.github.htdangkhoa.cleanarchitecture.di.module
 
 import android.content.Context
 import com.blankj.utilcode.util.NetworkUtils
+import com.github.htdangkhoa.cleanarchitecture.Constant
 import com.github.htdangkhoa.cleanarchitecture.data.model.AuthModel
 import com.github.htdangkhoa.cleanarchitecture.data.service.ApiService
 import java.util.concurrent.TimeUnit
@@ -18,7 +19,7 @@ object NetModule {
 
         single { provideOkHttpClient(get()) }
 
-        single { provideRetrofit(get(), "http://192.168.10.110:8080/api/") }
+        single { provideRetrofit(get(), Constant.BASE_URL) }
 
         single { provideAppService(get()) }
     }
