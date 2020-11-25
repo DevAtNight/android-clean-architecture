@@ -12,8 +12,8 @@
   <a href="https://github.com/htdangkhoa/android-clean-architecture/releases">
     <img src="https://img.shields.io/github/v/release/htdangkhoa/android-clean-architecture?style=for-the-badge" alt="Version" />
   </a>
-  <a href="https://www.codefactor.io/repository/github/htdangkhoa/android-clean-architecture">
-    <img src="https://img.shields.io/codefactor/grade/github/htdangkhoa/android-clean-architecture?style=for-the-badge" alt="CodeFactor" />
+  <a href="https://www.codefactor.io/repository/github/devat9/android-clean-architecture">
+    <img src="https://img.shields.io/codefactor/grade/github/devat9/android-clean-architecture?style=for-the-badge" alt="CodeFactor" />
 	</a>
 </p>
 
