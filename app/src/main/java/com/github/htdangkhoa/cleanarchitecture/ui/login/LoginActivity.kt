@@ -1,58 +1,72 @@
 package com.github.htdangkhoa.cleanarchitecture.ui.login
 
 import android.os.Bundle
-import com.github.htdangkhoa.cleanarchitecture.R
+import androidx.activity.compose.setContent
+import androidx.compose.material.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
 import com.github.htdangkhoa.cleanarchitecture.base.BaseActivity
 import com.github.htdangkhoa.cleanarchitecture.data.model.AuthModel
 import com.github.htdangkhoa.cleanarchitecture.data.remote.auth.AuthResponse
 import com.github.htdangkhoa.cleanarchitecture.resource.ObserverResource
+import com.github.htdangkhoa.cleanarchitecture.resource.Status
 import com.github.htdangkhoa.cleanarchitecture.ui.main.MainActivity
-import com.pawegio.kandroid.hide
-import com.pawegio.kandroid.show
 import com.pawegio.kandroid.startActivity
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.coroutines.launch
 
 class LoginActivity : BaseActivity<LoginViewModel>(LoginViewModel::class) {
-    override val layoutResID: Int
-        get() = R.layout.activity_login
-
     override fun render(savedInstanceState: Bundle?) {
-        viewModel.resourceToken.observe(this, object : ObserverResource<AuthResponse.Token>() {
-            override fun onSuccess(data: AuthResponse.Token) {
-                data.apply {
-                    AuthModel.accessToken = accessToken
+        setContent {
+            val scaffoldState = rememberScaffoldState()
+            val scope = rememberCoroutineScope()
+            val context = LocalContext.current
 
-                    AuthModel.refreshToken = refreshToken
-                }
+            var phoneNumberState by remember { mutableStateOf("") }
+            var passwordState by remember { mutableStateOf("") }
+            var isLoadingState by remember { mutableStateOf(false) }
 
-                startActivity<MainActivity>()
-
-                finishAfterTransition()
+            Scaffold(scaffoldState = scaffoldState) { paddingValues ->
+                LoginScreen(
+                    phoneNumberState = phoneNumberState,
+                    passwordState = passwordState,
+                    isLoading = isLoadingState,
+                    onPhoneNumberChange = { phoneNumberState = it },
+                    onPasswordChange = { passwordState = it },
+                    onLoginClick = {
+                        viewModel.login(phoneNumberState, passwordState)
+                    }
+                )
             }
 
-            override fun onError(throwable: Throwable?) {
-                handleError(throwable) {
-                    it?.message?.let {
-                        showDialog(message = it).apply {
-                            positiveButton {
-                                handleHttpError(throwable)
+            viewModel.resourceToken.observe(this, object : ObserverResource<AuthResponse.Token>() {
+                override fun onSuccess(data: AuthResponse.Token) {
+                    isLoadingState = false
+                    data.apply {
+                        AuthModel.accessToken = accessToken
+                        AuthModel.refreshToken = refreshToken
+                    }
+                    startActivity<MainActivity>()
+                    finishAfterTransition()
+                }
+
+                override fun onError(throwable: Throwable?) {
+                    isLoadingState = false
+                    handleError(throwable) {
+                        it?.message?.let { errorMessage ->
+                            scope.launch {
+                                scaffoldState.snackbarHostState.showSnackbar(
+                                    message = errorMessage,
+                                    duration = SnackbarDuration.Short
+                                )
                             }
                         }
                     }
                 }
-            }
 
-            override fun onLoading(isShow: Boolean) {
-                progressCircular.apply {
-                    if (isShow) show() else hide(true)
+                override fun onLoading(isShow: Boolean) {
+                    isLoadingState = isShow
                 }
-            }
-        })
-
-        btnLogin.setOnClickListener {
-            viewModel.login(
-                edtPhone.text.toString(), edtPassword.text.toString()
-            )
+            })
         }
     }
 }

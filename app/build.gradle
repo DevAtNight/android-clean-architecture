@@ -43,6 +43,12 @@ android {
 
         freeCompilerArgs = ["-Xallow-result-return-type"]
     }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.2.0"
+    }
 }
 
 dependencies {
@@ -85,6 +91,12 @@ dependencies {
 
     implementation "com.afollestad.material-dialogs:core:$versions.materialDialogs"
     implementation "com.afollestad.material-dialogs:input:$versions.materialDialogs"
+
+    implementation "androidx.compose.ui:ui:1.2.0"
+    implementation "androidx.compose.material:material:1.2.0"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.2.0"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.2.0"
+    debugImplementation "androidx.compose.ui:ui-tooling:1.2.0"
 }
 
 ktlint {
